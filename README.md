@@ -1,16 +1,28 @@
-# aadhar
+# Aadhar Address Update 
+### Theme 1 Problem Statement 2
 
-A new Flutter project.
 
-## Getting Started
+Flow of the application
 
-This project is a starting point for a Flutter application.
+-Mobile Operator enters using the id/pin code
+(Currently any pincode of digits >= 4 will work)
 
-A few resources to get you started if this is your first Flutter project:
+-Scans the document
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+-The document is scanned for text. Using google's machine learning and vision kit.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+-Recognised text is isolated into a separate list of words
+
+-Location is obtained using on board GPS
+
+-Its converted into a street address(reverse geocodding) using a geocode API.
+
+-The street address obtained is referenced against the recognised text to get the potential address.
+
+-Keywords such as "address" are checked from the document. If such text is recognised then the upcoming words are added into the potential address.
+
+-All address key words matched between the text from document and the street address from GPS are put up in the final form of address.
+
+-The user adds the missing fields.
+
+-The address is validated by first converting it into latitude and longitude and meauring the distance from the location of the device.
